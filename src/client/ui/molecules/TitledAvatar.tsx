@@ -6,7 +6,7 @@ import Avatar, { Props as AvatarProps } from "@/client/ui/atoms/Avatar";
 const titledAvatar = cva(["flex", "items-center"], {
   variants: {
     color: {
-      white: "text-white",
+      white: "text-black dark:text-white",
       black: "text-black",
     },
     size: {

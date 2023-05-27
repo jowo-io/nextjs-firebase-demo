@@ -20,7 +20,10 @@ export const H1: Story = {
     tag: "h1",
     children: "Hello world",
     options: (
-      <Cog6ToothIcon className="h-md w-md text-white" aria-hidden="true" />
+      <Cog6ToothIcon
+        className="h-md w-md text-black dark:text-white"
+        aria-hidden="true"
+      />
     ),
   },
 };

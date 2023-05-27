@@ -47,13 +47,15 @@ export default async function Page() {
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {description}
             </p>
-            <Link
-              href={url}
-              className="leading-0 inline-flex items-center gap-2 rounded-lg bg-blue-700 px-3 py-2 font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              <span>Listen</span>
-              <MusicalNoteIcon className="h-4 w-4" />
-            </Link>
+            <div>
+              <Link
+                href={url}
+                className="mt-2 rounded bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700 "
+              >
+                <span>Listen</span>{" "}
+                <MusicalNoteIcon className="inline h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       ))}

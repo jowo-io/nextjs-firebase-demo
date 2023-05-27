@@ -27,11 +27,11 @@ export default function Pagination({
   return (
     <div
       className={cx(
-        "flex w-full flex-col justify-center px-sm py-xs",
+        "px-sm py-xs flex w-full flex-col justify-center",
         className
       )}
     >
-      <p className="pb-xs text-center text-sm text-white">
+      <p className="pb-xs text-center text-sm text-black dark:text-white">
         {pages === 0 && (
           <>
             <b>No</b> results found

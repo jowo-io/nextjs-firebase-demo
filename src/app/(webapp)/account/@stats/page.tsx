@@ -9,5 +9,5 @@ async function getData() {
 export default async function Page() {
   const data = await getData();
 
-  return <p className="text-white">stats: {data}</p>;
+  return <p className="text-black dark:text-white">stats: {data}</p>;
 }

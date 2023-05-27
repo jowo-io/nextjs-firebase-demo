@@ -13,7 +13,7 @@ export default async function Page({}) {
   const data = await getData();
 
   return (
-    <div className="text-white">
+    <div className="text-black dark:text-white">
       {data.map((item) => (
         <span key={item}>{item}</span>
       ))}

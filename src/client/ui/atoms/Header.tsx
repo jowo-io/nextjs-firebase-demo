@@ -16,7 +16,7 @@ const header = cva(
         h6: ["text-sm"],
       },
       color: {
-        white: "text-white",
+        white: "text-black dark:text-white",
         black: "text-black",
       },
     },

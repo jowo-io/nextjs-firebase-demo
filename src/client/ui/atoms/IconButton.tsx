@@ -21,7 +21,11 @@ const iconButton = cva(
       intent: {
         enable: ["bg-white", "text-gray-900", "hover:bg-gray-100"],
         disable: ["bg-white", "text-gray-400", "cursor-default"],
-        highlight: ["bg-neutral", "text-white", "cursor-default"],
+        highlight: [
+          "bg-neutral",
+          "text-black dark:text-white",
+          "cursor-default",
+        ],
       },
       size: {
         sm: ["w-sm", "h-sm"],
