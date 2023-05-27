@@ -1,7 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
-// import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   ArrowUpCircleIcon,
@@ -12,15 +11,16 @@ import {
 } from "@heroicons/react/20/solid";
 
 import { PathNames } from "@/client/utils/links";
+import getFirebase from "@/utils/firebase";
+import useAuth from "@/hooks/useAuth";
 
-import { env } from "@/env.mjs";
-import Image from "next/image";
-import { cx } from "class-variance-authority";
+const { auth } = getFirebase();
 
 export interface Props {}
 
 export default function Nav({}: Props) {
-  const session = {};
+  const { user } = useAuth();
+  const router = useRouter();
 
   const links = [
     { text: "Chart", path: "", Icon: ArrowUpCircleIcon },
@@ -62,10 +62,14 @@ export default function Nav({}: Props) {
           })}
           <li>
             <button
-              // onClick={session ? () => void signOut() : () => void signIn()}
+              onClick={
+                user
+                  ? () => void auth.signOut()
+                  : () => router.push(PathNames.auth)
+              }
               className="mt-2 w-full rounded bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700"
             >
-              {session ? "Sign out" : "Sign in"}
+              {user ? "Sign out" : "Sign in"}
             </button>
           </li>
         </ul>

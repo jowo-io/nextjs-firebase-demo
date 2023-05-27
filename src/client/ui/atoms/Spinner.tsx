@@ -5,12 +5,12 @@ const spinner = cva([], {
   variants: {
     intent: {
       primary: ["fill-primary", "text-white", "animate-spin"],
-      secondary: ["fill-secondary", "text-gray-200", "animate-spin"],
+      secondary: ["fill-black", "text-gray-200", "animate-spin"],
     },
     size: {
-      sm: ["w-sm", "h-sm"],
-      md: ["w-md", "h-md"],
-      lg: ["w-lg", "h-lg"],
+      sm: ["w-6", "h-6"],
+      md: ["w-8", "h-8"],
+      lg: ["w-12", "h-12"],
     },
   },
   compoundVariants: [{ intent: "primary", size: "md", class: "font-bold" }],

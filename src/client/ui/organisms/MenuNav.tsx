@@ -1,21 +1,27 @@
 "use client";
 
-import { ReactNode, useState } from "react";
-// import { signIn, signOut, useSession } from "next-auth/react";
+import { useState } from "react";
 import Link from "next/link";
-
-import { PathNames } from "@/client/utils/links";
-
-import { env } from "@/env.mjs";
 import Image from "next/image";
 import { cx } from "class-variance-authority";
+
+import { PathNames } from "@/client/utils/links";
+import getFirebase from "@/utils/firebase";
+import { useRouter } from "next/navigation";
+import useAuth from "@/hooks/useAuth";
+
+const { auth } = getFirebase();
 
 export interface Props {}
 
 export default function Nav({}: Props) {
-  // const { data: session } = useSession();
+  const { user } = useAuth();
+  const router = useRouter();
   const [isMobileMenuVisible, setMobileMenu] = useState(false);
-  const session = {};
+
+  console.log({ user });
+  console.log(auth);
+  console.log(auth?.currentUser);
 
   const links = [{ text: "Listen now", path: PathNames.listEpisodes }];
 
@@ -47,9 +53,9 @@ export default function Nav({}: Props) {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
         </button>
@@ -89,10 +95,14 @@ export default function Nav({}: Props) {
               />
             </Link>
             <button
-              // onClick={session ? () => void signOut() : () => void signIn()}
+              onClick={
+                user
+                  ? () => void auth.signOut()
+                  : () => router.push(PathNames.auth)
+              }
               className="rounded bg-blue-500 px-3 py-1 text-sm font-bold text-white hover:bg-blue-700"
             >
-              {session ? "Sign out" : "Sign in"}
+              {user ? "Sign out" : "Sign in"}
             </button>
           </div>
         </div>

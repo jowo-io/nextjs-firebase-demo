@@ -1,19 +1,16 @@
 "use client";
 
-import { ReactNode, useState } from "react";
-// import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { PathNames } from "@/client/utils/links";
 
-import { env } from "@/env.mjs";
-import Image from "next/image";
-import { cx } from "class-variance-authority";
+import useAuth from "@/hooks/useAuth";
 
 export interface Props {}
 
 export default function Nav({}: Props) {
-  // const { data: session } = useSession();
+  const { user } = useAuth();
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-gray-200 bg-white dark:bg-gray-900">

@@ -11,6 +11,7 @@ export function getLink(
 export enum PathNames {
   // misc
   home = "/",
+  auth = "/auth",
 
   // account
   account = "/account",
