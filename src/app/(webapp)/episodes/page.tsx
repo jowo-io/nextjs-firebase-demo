@@ -1,8 +1,8 @@
-import { getLink, PathNames } from "@/client/utils/links";
-import { MusicalNoteIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Link from "next/link";
-import React, { PropsWithChildren } from "react";
+
+import { getLink, PathNames } from "@/client/utils/links";
+import { MusicalNoteIcon } from "@heroicons/react/20/solid";
 
 async function getData() {
   await new Promise((r) => setTimeout(r, 5000));
@@ -19,7 +19,7 @@ async function getData() {
   ];
 }
 
-export default async function Page({}: PropsWithChildren) {
+export default async function Page() {
   const data = await getData();
 
   return (

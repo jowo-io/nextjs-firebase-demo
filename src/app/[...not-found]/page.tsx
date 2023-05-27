@@ -1,9 +1,7 @@
 "use client";
 
-import React, { PropsWithChildren } from "react";
-
 import ErrorNotFoundScreen from "@/screens/Error/NotFound";
 
-export default function NotFoundPage({}: PropsWithChildren) {
+export default function NotFoundPage() {
   return <ErrorNotFoundScreen />;
 }

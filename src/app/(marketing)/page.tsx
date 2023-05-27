@@ -1,6 +1,6 @@
 "use client";
 
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import { Metadata } from "next";
 
 import Header from "@/client/ui/atoms/Header";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "This is a demo app",
 };
 
-export default function Page({}: PropsWithChildren) {
+export default function Page() {
   return (
     <div className="w-full">
       <Header tag="h1">Demo app</Header>

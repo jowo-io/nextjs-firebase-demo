@@ -3,13 +3,11 @@ import { Metadata, ResolvingMetadata } from "next";
 
 type MetadataProps = {
   params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-  { params }: MetadataProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
   // read route params
   const { id } = params;
   console.log({ id });
