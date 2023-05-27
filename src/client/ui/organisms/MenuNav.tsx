@@ -26,7 +26,7 @@ export default function Nav({}: Props) {
   const links = [{ text: "Listen now", path: PathNames.listEpisodes }];
 
   return (
-    <nav className="border-gray-200 bg-white dark:bg-gray-900">
+    <nav className="border-gray-200 bg-gray-300 dark:bg-gray-900">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <Link href={PathNames.home} className="flex items-center">
           <Image

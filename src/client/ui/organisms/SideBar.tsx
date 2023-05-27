@@ -36,7 +36,7 @@ export default function Nav({}: Props) {
       className="fixed left-0 top-14 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0"
       aria-label="Sidebar"
     >
-      <div className="p h-full overflow-y-auto bg-gray-50 px-3 py-4 dark:bg-gray-800">
+      <div className="p h-full overflow-y-auto bg-gray-300 px-3 py-4 dark:bg-gray-800">
         <ul className="space-y-2 font-medium">
           {links.map(({ text, Icon, path }) => {
             return (

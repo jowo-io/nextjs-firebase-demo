@@ -13,7 +13,7 @@ export default function Nav({}: Props) {
   const { user } = useAuth();
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 border-gray-200 bg-white dark:bg-gray-900">
+    <nav className="fixed left-0 right-0 top-0 z-50 border-gray-200 bg-gray-500 dark:bg-gray-900">
       <div className="mx-auto flex flex-wrap items-center justify-between p-4">
         <Link href={PathNames.home} className="flex items-center">
           <Image

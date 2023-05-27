@@ -5,7 +5,7 @@ import SideBar from "@/client/ui/organisms/SideBar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="p-sm min-h-screen bg-black">
+    <main className="p-sm min-h-screen bg-white dark:bg-black">
       <BasicNav />
       <SideBar />
 

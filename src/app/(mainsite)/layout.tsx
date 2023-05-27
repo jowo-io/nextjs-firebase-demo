@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="p-sm min-h-screen bg-black">
+    <main className="p-sm min-h-screen bg-white dark:bg-black">
       <MenuNav />
       <div className="m-auto flex w-full max-w-xs items-center justify-center">
         {children}
