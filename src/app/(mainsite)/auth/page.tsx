@@ -20,7 +20,8 @@ export default function Auth() {
     try {
       setSubmitting(true);
       await sendSignInLinkToEmail(auth, email, {
-        url: env.NEXT_PUBLIC_SITE_URL + PathNames.home,
+        url:
+          (process.env.VERCEL_URL || env.NEXT_PUBLIC_SITE_URL) + PathNames.home,
         handleCodeInApp: true,
       });
     } catch (error) {
