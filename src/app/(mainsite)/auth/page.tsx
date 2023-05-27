@@ -1,34 +1,66 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { sendSignInLinkToEmail } from "firebase/auth";
+import {
+  sendSignInLinkToEmail,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
+} from "firebase/auth";
 
 import getFirebase from "@/utils/firebase";
 import { PathNames } from "@/client/utils/links";
-import { env } from "@/env.mjs";
 import Spinner from "@/client/ui/atoms/Spinner";
+import { useRouter } from "next/navigation";
 
 const { auth } = getFirebase();
 
 export default function Auth() {
+  const isCallback = isSignInWithEmailLink(auth, window.location.href);
   const [email, setEmail] = useState("");
+  const [isLoading, setLoading] = useState(isCallback);
   const [isSubmitting, setSubmitting] = useState(false);
 
   async function triggerSendSignInLinkToEmail() {
     try {
       setSubmitting(true);
       await sendSignInLinkToEmail(auth, email, {
-        url:
-          (process.env.VERCEL_URL || env.NEXT_PUBLIC_SITE_URL) + PathNames.home,
+        url: window.location.href,
         handleCodeInApp: true,
       });
+      window.localStorage.setItem("emailForSignIn", email);
     } catch (error) {
       console.error(error);
     } finally {
       setSubmitting(false);
     }
+  }
+
+  useEffect(() => {
+    (async () => {
+      if (isCallback) {
+        let email = window.localStorage.getItem("emailForSignIn");
+        if (!email) {
+          email = window.prompt(
+            "Please provide your email for confirmation"
+          ) as string;
+        }
+        try {
+          setLoading(true);
+          await signInWithEmailLink(auth, email, window.location.href);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          window.localStorage.removeItem("emailForSignIn");
+          setLoading(false);
+        }
+      }
+    })();
+  }, []);
+
+  if (isLoading) {
+    return <Spinner size="sm" intent="secondary" className="m-auto" />;
   }
 
   return (
