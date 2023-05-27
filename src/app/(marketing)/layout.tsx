@@ -1,6 +1,12 @@
 import React from "react";
+import { Metadata } from "next";
 
 import MenuNav from "@/client/ui/organisms/MenuNav";
+
+export const metadata: Metadata = {
+  title: "Demo app",
+  description: "This is a demo app",
+};
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

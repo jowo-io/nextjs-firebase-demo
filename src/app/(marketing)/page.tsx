@@ -1,14 +1,6 @@
-"use client";
-
 import React from "react";
-import { Metadata } from "next";
 
 import Header from "@/client/ui/atoms/Header";
-
-export const metadata: Metadata = {
-  title: "Demo app",
-  description: "This is a demo app",
-};
 
 export default function Page() {
   return (
