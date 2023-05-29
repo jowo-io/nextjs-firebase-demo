@@ -1,8 +1,8 @@
-import getFirebase from "@/utils/firebase";
+import Header from "@/client/ui/atoms/Header";
+import { env } from "@/env.mjs";
 
 import LiveCard from "./LiveCard";
 import { Episode } from "./types";
-import { env } from "@/env.mjs";
 
 async function getData(): Promise<Episode[]> {
   await new Promise((r) => setTimeout(r, 1000));
@@ -22,6 +22,7 @@ export default async function Page() {
 
   return (
     <div>
+      <Header tag="h1">Episodes</Header>
       {data.map(({ id, image, title, summary, sats }) => (
         <LiveCard
           key={id}
