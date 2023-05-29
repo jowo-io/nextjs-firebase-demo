@@ -8,15 +8,11 @@ import { MusicalNoteIcon } from "@heroicons/react/20/solid";
 import getFirebase from "@/utils/firebase";
 import { useDoc } from "@/hooks/useDoc";
 
+import { Episode } from "./types";
+
 const { db } = getFirebase();
 
-type Props = {
-  id: string;
-  image: string;
-  title: string;
-  summary: string;
-  sats: number;
-};
+type Props = Pick<Episode, "id" | "image" | "title" | "summary" | "sats">;
 
 export default function LiveCard({ id, image, title, summary, sats }: Props) {
   const data = useDoc(db, "episodes", id);
