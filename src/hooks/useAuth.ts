@@ -1,19 +1,47 @@
 import { useEffect, useState } from "react";
 
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
 import getFirebase from "@/utils/firebase";
 
 const { auth } = getFirebase();
 
+export type User = {
+  id: string;
+  email: string;
+  isEmailVerified: boolean;
+  displayName?: string;
+  image?: string;
+};
+
+function cleanFirebaseUser(user: FirebaseUser | null): User | undefined {
+  return user
+    ? {
+        id: user.uid,
+        email: user.email as string,
+        isEmailVerified: user.emailVerified,
+        displayName: user.displayName || undefined,
+        image: user.photoURL || undefined,
+      }
+    : undefined;
+}
+
 function useAuth() {
   const [isReady, setReady] = useState(false);
-  const [user, setUser] = useState(auth?.currentUser);
+  const [user, setUser] = useState<User | undefined>(
+    cleanFirebaseUser(auth?.currentUser)
+  );
   const [error, setError] = useState("");
 
   useEffect(() => {
     const stateListener = onAuthStateChanged(
       auth,
-      async (user) => setUser(user),
+      async (user) => {
+        if (user) {
+          setUser(cleanFirebaseUser(user));
+        } else {
+          setError("Unknown user");
+        }
+      },
       (error) => {
         console.error(error);
         setError(error.message);

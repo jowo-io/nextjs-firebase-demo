@@ -20,8 +20,6 @@ export default function Nav({}: Props) {
   const [isMobileMenuVisible, setMobileMenu] = useState(false);
 
   console.log({ user });
-  console.log(auth);
-  console.log(auth?.currentUser);
 
   const links = [{ text: "Listen now", path: PathNames.listEpisodes }];
 

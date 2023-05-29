@@ -20,7 +20,6 @@ const getFirebase = (() => {
     try {
       app = initializeApp(firebaseConfig);
       auth = getAuth(app);
-      console.log("getAuth", auth);
       //   db = getFirestore(app);
     } catch (e) {
       console.error("[@utils/getFirebase]", e);
