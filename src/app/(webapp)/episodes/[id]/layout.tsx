@@ -15,7 +15,7 @@ export async function generateMetadata({
   // read route params
   const { id } = params;
 
-  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/get", {
+  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/get?v=1", {
     method: "POST",
     body: JSON.stringify({ id }),
   });

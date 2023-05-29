@@ -7,8 +7,9 @@ import { Episode } from "./types";
 async function getData(): Promise<Episode[]> {
   await new Promise((r) => setTimeout(r, 1000));
 
-  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/list", {
+  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/list?v=1", {
     method: "POST",
+    body: "{}",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
