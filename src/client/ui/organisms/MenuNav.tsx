@@ -19,8 +19,6 @@ export default function Nav({}: Props) {
   const router = useRouter();
   const [isMobileMenuVisible, setMobileMenu] = useState(false);
 
-  console.log({ user });
-
   const links = [{ text: "Listen now", path: PathNames.listEpisodes }];
 
   return (
