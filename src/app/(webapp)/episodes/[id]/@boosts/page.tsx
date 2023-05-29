@@ -5,15 +5,19 @@ import BoostList from "./BoostList";
 import { Boost } from "../../../boosts/types";
 
 async function getData(id: string): Promise<Boost[]> {
-  await new Promise((r) => setTimeout(r, 1000));
+  await new Promise((r) => setTimeout(r, 3000));
 
-  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/boosts/api/list?abc", {
+  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/boosts/api/list", {
     method: "POST",
     body: JSON.stringify({ id }),
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
+
+  // if (Math.random() < 0.333) {
+  //   throw new Error("Something broke");
+  // }
 
   return res.json();
 }

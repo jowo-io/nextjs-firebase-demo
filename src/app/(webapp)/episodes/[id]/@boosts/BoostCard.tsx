@@ -20,10 +20,11 @@ export default function BoostCard({
   return (
     <div
       key={id}
-      className="max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
+      className="m-auto max-w-lg rounded-lg border border-gray-200 bg-white p-2 shadow dark:border-gray-700 dark:bg-gray-800"
     >
-      <h6 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-        <b>@{user}</b> at <i>{createdAt?.toString()}</i>
+      <h6 className="mb-2 flex items-center justify-between text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+        <b>@{user}</b>
+        <i className="text-sm">{createdAt?.toString()}</i>
       </h6>
       <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
         {message}
