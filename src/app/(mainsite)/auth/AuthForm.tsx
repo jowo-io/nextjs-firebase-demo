@@ -9,20 +9,12 @@ import {
 
 import getFirebase from "@/utils/firebase";
 import Spinner from "@/client/ui/atoms/Spinner";
-import { cx } from "class-variance-authority";
 
 const { auth } = getFirebase();
 
-type Props = {
-  url: string;
-};
-
-export default function AuthForm({ url }: Props) {
-  console.log("args", url);
-
-  const isCallback = isSignInWithEmailLink(auth, url);
+export default function AuthForm() {
   const [email, setEmail] = useState("");
-  const [isLoading, setLoading] = useState(isCallback);
+  const [isLoading, setLoading] = useState(true);
   const [isSubmitting, setSubmitting] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
@@ -33,7 +25,7 @@ export default function AuthForm({ url }: Props) {
       setError(false);
       setSubmitting(true);
       await sendSignInLinkToEmail(auth, email, {
-        url,
+        window.location.href,
         handleCodeInApp: true,
       });
       setSubmitted(true);
@@ -47,6 +39,7 @@ export default function AuthForm({ url }: Props) {
 
   useEffect(() => {
     (async () => {
+      const isCallback = isSignInWithEmailLink(auth, window.location.href);
       if (isCallback) {
         let email = window.localStorage.getItem("emailForSignIn");
         if (!email) {
@@ -56,7 +49,7 @@ export default function AuthForm({ url }: Props) {
         }
         try {
           setLoading(true);
-          await signInWithEmailLink(auth, email, url);
+          await signInWithEmailLink(auth, email, window.location.href);
           setSuccess(true);
         } catch (error) {
           console.error(error);
