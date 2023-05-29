@@ -9,10 +9,12 @@ import {
 
 import getFirebase from "@/utils/firebase";
 import Spinner from "@/client/ui/atoms/Spinner";
+import useAuth from "@/hooks/useAuth";
 
 const { auth } = getFirebase();
 
 export default function AuthForm() {
+  const { user, isReady } = useAuth();
   const [email, setEmail] = useState("");
   const [isLoading, setLoading] = useState(true);
   const [isSubmitting, setSubmitting] = useState(false);
@@ -62,7 +64,11 @@ export default function AuthForm() {
     })();
   }, []);
 
-  if (isLoading) {
+  if (!user) {
+    return <>You are already logged in!</>;
+  }
+
+  if (isLoading || !isReady) {
     return <Spinner size="sm" intent="secondary" className="m-auto" />;
   }
 
