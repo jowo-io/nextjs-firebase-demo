@@ -19,8 +19,8 @@ function cleanFirebaseUser(user: FirebaseUser | null): User | undefined {
         id: user.uid,
         email: user.email as string,
         isEmailVerified: user.emailVerified,
-        displayName: user.displayName || undefined,
-        image: user.photoURL || undefined,
+        displayName: user.displayName || "Frodo",
+        image: user.photoURL || "/frodo.png",
       }
     : undefined;
 }

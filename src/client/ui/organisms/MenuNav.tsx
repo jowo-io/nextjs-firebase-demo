@@ -88,7 +88,7 @@ export default function Nav({}: Props) {
                 width={28}
                 height={28}
                 className="rounded-full"
-                src={"/fallback-avatar.png"}
+                src={user?.image || "/fallback-avatar.png"}
                 alt={"Avatar"}
               />
             </Link>
