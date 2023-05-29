@@ -25,7 +25,7 @@ export default function AuthForm() {
       setError(false);
       setSubmitting(true);
       await sendSignInLinkToEmail(auth, email, {
-        window.location.href,
+        url: window.location.href,
         handleCodeInApp: true,
       });
       setSubmitted(true);
