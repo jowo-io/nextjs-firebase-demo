@@ -14,7 +14,13 @@ const { db } = getFirebase();
 
 type Props = Pick<Episode, "id" | "image" | "title" | "summary" | "sats">;
 
-export default function LiveCard({ id, image, title, summary, sats }: Props) {
+export default function EpisodeCard({
+  id,
+  image,
+  title,
+  summary,
+  sats,
+}: Props) {
   const data = useDoc(db, "episodes", id);
   const url = getLink("viewEpisode", { id });
   return (

@@ -1,6 +1,6 @@
 import { env } from "@/env.mjs";
 
-import LiveCard from "./LiveCard";
+import EpisodeCard from "./EpisodeCard";
 import { Episode } from "../types";
 
 async function getData(id: string): Promise<Episode> {
@@ -26,7 +26,7 @@ export default async function Page({ params }: Props) {
   const { image, title, description, sats } = await getData(id);
 
   return (
-    <LiveCard
+    <EpisodeCard
       key={id}
       id={id}
       image={image}

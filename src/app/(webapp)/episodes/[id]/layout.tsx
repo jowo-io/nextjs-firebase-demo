@@ -41,6 +41,17 @@ export async function generateMetadata({
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <div className="w-full">{children}</div>;
+export default function Layout({
+  children,
+  boosts,
+}: {
+  children: React.ReactNode;
+  boosts: React.ReactNode;
+}) {
+  return (
+    <div className="w-full">
+      {children}
+      {boosts}
+    </div>
+  );
 }

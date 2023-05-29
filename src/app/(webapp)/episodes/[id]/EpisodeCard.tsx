@@ -12,7 +12,7 @@ const { db } = getFirebase();
 
 type Props = Pick<Episode, "id" | "image" | "title" | "description" | "sats">;
 
-export default function LiveCard({
+export default function EpisodeCard({
   id,
   image,
   title,

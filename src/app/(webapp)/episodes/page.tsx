@@ -1,7 +1,7 @@
 import Header from "@/client/ui/atoms/Header";
 import { env } from "@/env.mjs";
 
-import LiveCard from "./LiveCard";
+import EpisodeCard from "./EpisodeCard";
 import { Episode } from "./types";
 
 async function getData(): Promise<Episode[]> {
@@ -24,7 +24,7 @@ export default async function Page() {
     <div>
       <Header tag="h1">Episodes</Header>
       {data.map(({ id, image, title, summary, sats }) => (
-        <LiveCard
+        <EpisodeCard
           key={id}
           id={id}
           image={image}
