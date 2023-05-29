@@ -1,29 +1,20 @@
-import { collection, getDocs } from "firebase/firestore";
 import getFirebase from "@/utils/firebase";
 
 import LiveCard from "./LiveCard";
-
-const { db } = getFirebase();
-
-type Episode = {
-  id: string;
-  image: string;
-  title: string;
-  summary: string;
-  sats: number;
-};
+import { Episode } from "./types";
+import { env } from "@/env.mjs";
 
 async function getData(): Promise<Episode[]> {
   await new Promise((r) => setTimeout(r, 1000));
 
-  const episodes: Episode[] = [];
-
-  const querySnapshot = await getDocs(collection(db, "episodes"));
-  querySnapshot.forEach((doc) => {
-    episodes.push(doc.data() as Episode);
+  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/list", {
+    method: "POST",
   });
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
 
-  return episodes;
+  return res.json();
 }
 
 export default async function Page() {
