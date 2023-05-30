@@ -12,6 +12,7 @@ async function getData(id: string): Promise<Episode> {
     method: "POST",
     body: JSON.stringify({ id }),
     next: { revalidate: 10 },
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");

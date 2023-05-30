@@ -1,4 +1,4 @@
-import React from "react";
+"use server";
 
 async function getData() {
   await new Promise((r) => setTimeout(r, 5000));
