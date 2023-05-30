@@ -11,7 +11,6 @@ async function getData(id: string): Promise<Episode> {
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/get?v=1", {
     method: "POST",
     body: JSON.stringify({ id }),
-    next: { revalidate: 10 },
     cache: "no-store",
   });
   if (!res.ok) {

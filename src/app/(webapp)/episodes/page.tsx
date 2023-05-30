@@ -6,9 +6,7 @@ import { env } from "@/env.mjs";
 import EpisodeCard from "./EpisodeCard";
 import { Episode } from "./types";
 
-async function getData(): Promise<Episode[]> {
-  await new Promise((r) => setTimeout(r, 1000));
-
+export default async function Page() {
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/list?v=1", {
     method: "POST",
     next: { revalidate: 10 },
@@ -18,11 +16,7 @@ async function getData(): Promise<Episode[]> {
     throw new Error("Failed to fetch data");
   }
 
-  return res.json();
-}
-
-export default async function Page() {
-  const data = await getData();
+  const data = (await res.json()) as Episode[];
 
   return (
     <div>

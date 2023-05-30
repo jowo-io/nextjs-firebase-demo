@@ -19,7 +19,6 @@ export async function generateMetadata({
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/get?v=1", {
     method: "POST",
     body: JSON.stringify({ id }),
-    next: { revalidate: 10 },
     cache: "no-store",
   });
   if (!res.ok) {
@@ -44,7 +43,7 @@ export async function generateMetadata({
   };
 }
 
-export default function Layout({
+export default async function Layout({
   children,
   boosts,
 }: {
