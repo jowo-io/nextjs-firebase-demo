@@ -1,3 +1,5 @@
+"use server";
+
 import React from "react";
 import { Metadata } from "next";
 
@@ -17,6 +19,7 @@ export async function generateMetadata({
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/get?v=1", {
     method: "POST",
     body: JSON.stringify({ id }),
+    next: { revalidate: 10 },
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -40,7 +43,7 @@ export async function generateMetadata({
   };
 }
 
-export default function Layout({
+export default async function Layout({
   children,
   boosts,
 }: {

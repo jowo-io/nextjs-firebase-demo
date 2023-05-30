@@ -1,3 +1,5 @@
+"use server";
+
 import Header from "@/client/ui/atoms/Header";
 import { env } from "@/env.mjs";
 
@@ -10,6 +12,7 @@ async function getData(id: string): Promise<Boost[]> {
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/boosts/api/list?v=1", {
     method: "POST",
     body: JSON.stringify({ id }),
+    next: { revalidate: 10 },
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");

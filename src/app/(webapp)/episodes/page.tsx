@@ -1,3 +1,5 @@
+"use server";
+
 import Header from "@/client/ui/atoms/Header";
 import { env } from "@/env.mjs";
 
@@ -9,7 +11,7 @@ async function getData(): Promise<Episode[]> {
 
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/list?v=1", {
     method: "POST",
-    body: "{}",
+    next: { revalidate: 10 },
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");

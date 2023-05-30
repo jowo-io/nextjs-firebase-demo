@@ -1,3 +1,5 @@
+"use server";
+
 import { env } from "@/env.mjs";
 
 import EpisodeCard from "./EpisodeCard";
@@ -9,6 +11,7 @@ async function getData(id: string): Promise<Episode> {
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/get?v=1", {
     method: "POST",
     body: JSON.stringify({ id }),
+    next: { revalidate: 10 },
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
