@@ -12,9 +12,9 @@ export default function ErrorNotFoundScreen({}: Props) {
   return (
     <div className="gap-xs py-xs flex w-full flex-col">
       <Header tag="h1">404</Header>
-      <Header tag="h4">Sorry, that page doesn&quot;t exist.</Header>
+      <Header tag="h4">Sorry, that page doesn&apos;t exist.</Header>
       <p className="mb-md text-black dark:text-white">
-        But don&quot;t worry, you can find plenty of other things by navigating
+        But don&apos;t worry, you can find plenty of other things by navigating
         back to the homepage.
       </p>
       <Button size="lg" onClick={() => push(PathNames.home)}>
