@@ -47,9 +47,9 @@ function useAuth() {
         setError(error.message);
       }
     );
+    setReady(true);
     return () => {
       stateListener();
-      setReady(true);
     };
   }, []);
 
