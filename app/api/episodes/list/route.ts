@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { collection, getDocs } from "firebase/firestore";
 import getFirebase from "@/utils/firebase";
 
-import { Episode } from "../../types";
+import { Episode } from "../../../(webapp)/episodes/types";
 
 const { db } = getFirebase();
 

@@ -6,7 +6,7 @@ import { Episode } from "../types";
 async function getData(id: string): Promise<Episode> {
   // await new Promise((r) => setTimeout(r, 1000));
 
-  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/get?v=1", {
+  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/api/episodes/get?v=1", {
     method: "POST",
     body: JSON.stringify({ id }),
     cache: "no-store",

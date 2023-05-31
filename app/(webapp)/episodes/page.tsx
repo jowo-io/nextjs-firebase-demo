@@ -5,7 +5,7 @@ import EpisodeCard from "./EpisodeCard";
 import { Episode } from "./types";
 
 export default async function Page() {
-  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/list?v=1", {
+  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/api/episodes/list?v=1", {
     method: "POST",
     cache: "no-store",
   });
