@@ -64,6 +64,10 @@ export default function AuthForm() {
     })();
   }, []);
 
+  if (isSuccess) {
+    return <p className="text-black dark:text-white">Success!</p>;
+  }
+
   if (user) {
     return (
       <p className="text-black dark:text-white">You are already logged in!</p>
@@ -76,10 +80,6 @@ export default function AuthForm() {
         <Spinner size="sm" intent="secondary" className="mx-auto" />
       </p>
     );
-  }
-
-  if (isSuccess) {
-    return <p className="text-black dark:text-white">Success!</p>;
   }
 
   return (
@@ -95,6 +95,7 @@ export default function AuthForm() {
             role="alert"
           >
             <strong className="font-bold">Email sent!</strong>
+            <br />
             <span className="block sm:inline">
               Please check your email and click the authentication link
               provided.
@@ -107,6 +108,7 @@ export default function AuthForm() {
             role="alert"
           >
             <strong className="font-bold">Authentication failed!</strong>
+            <br />
             <span className="block sm:inline">
               The authentication attempt failed. Please refresh and try again.
             </span>
