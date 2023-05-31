@@ -52,6 +52,21 @@ export default function AuthForm() {
         try {
           setLoading(true);
           await signInWithEmailLink(auth, email, window.location.href);
+          const { user } = await signInWithEmailLink(
+            auth,
+            email,
+            window.location.href
+          );
+          const idToken = await user.getIdToken();
+          console.log({ idToken });
+          // const idToken = await getIdToken(user);
+          const response = await fetch("/api/auth/session", {
+            method: "POST",
+            body: JSON.stringify({ idToken }),
+          });
+          const jsonData = await response.json();
+          console.log({ jsonData });
+
           setSuccess(true);
         } catch (error) {
           console.error(error);

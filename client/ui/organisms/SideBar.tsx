@@ -63,9 +63,7 @@ export default function Nav({}: Props) {
           <li>
             <button
               onClick={
-                user
-                  ? () => void auth.signOut()
-                  : () => router.push(PathNames.auth)
+                user ? () => auth.signOut() : () => router.push(PathNames.auth)
               }
               className="mt-2 w-full rounded bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700"
             >

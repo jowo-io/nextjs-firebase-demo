@@ -11,3 +11,4 @@
   - build an authed serverside account page
 - fix vercel build
 - migrate from `next/head`
+- make signout button actually update app state when pressed

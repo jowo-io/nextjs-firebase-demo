@@ -4,16 +4,24 @@ import { z } from "zod";
 const processEnv = {
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
 
+  FIREBASE_PRIVATE_KEY: process.env.FIREBASE_PRIVATE_KEY,
+  FIREBASE_PRIVATE_KEY_ID: process.env.FIREBASE_PRIVATE_KEY_ID,
+
   NODE_ENV: process.env.NODE_ENV,
 };
 
 const client = z.object({
-  NEXT_PUBLIC_SITE_URL: z.string().min(1).optional(),
+  NEXT_PUBLIC_SITE_URL: z.string().min(1),
 
   NODE_ENV: z.enum(["development", "test", "production"]),
 });
 
-const server = z.object({});
+const server = z.object({
+  NEXT_PUBLIC_SITE_URL: z.string().min(1),
+
+  FIREBASE_PRIVATE_KEY: z.string().min(1),
+  FIREBASE_PRIVATE_KEY_ID: z.string().min(1),
+});
 
 // Don't touch the part below
 // --------------------------
