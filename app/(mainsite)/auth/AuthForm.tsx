@@ -16,7 +16,7 @@ const { auth } = getFirebase();
 export default function AuthForm() {
   const { user, isReady } = useAuth();
   const [email, setEmail] = useState("");
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
