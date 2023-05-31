@@ -10,3 +10,4 @@
 - figure out serverside auth
   - build an authed serverside account page
 - fix vercel build
+- migrate from `next/head`
