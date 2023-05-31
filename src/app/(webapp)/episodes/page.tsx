@@ -1,5 +1,3 @@
-"use server";
-
 import Header from "@/client/ui/atoms/Header";
 import { env } from "@/env.mjs";
 

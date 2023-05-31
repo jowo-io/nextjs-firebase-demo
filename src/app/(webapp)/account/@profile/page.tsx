@@ -1,5 +1,3 @@
-"use server";
-
 async function getData() {
   await new Promise((r) => setTimeout(r, 2000));
 
