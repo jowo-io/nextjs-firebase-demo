@@ -32,6 +32,8 @@ function useAuth() {
   );
   const [error, setError] = useState("");
 
+  console.log(auth);
+
   useEffect(() => {
     const stateListener = onAuthStateChanged(
       auth,
