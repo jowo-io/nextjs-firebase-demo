@@ -65,15 +65,21 @@ export default function AuthForm() {
   }, []);
 
   if (user) {
-    return <>You are already logged in!</>;
+    return (
+      <p className="text-black dark:text-white">You are already logged in!</p>
+    );
   }
 
   if (isLoading || !isReady) {
-    return <Spinner size="sm" intent="secondary" className="m-auto" />;
+    return (
+      <p>
+        <Spinner size="sm" intent="secondary" className="mx-auto" />
+      </p>
+    );
   }
 
   if (isSuccess) {
-    return <>Success!</>;
+    return <p className="text-black dark:text-white">Success!</p>;
   }
 
   return (
