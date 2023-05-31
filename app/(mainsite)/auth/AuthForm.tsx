@@ -64,7 +64,7 @@ export default function AuthForm() {
     })();
   }, []);
 
-  if (!user) {
+  if (user) {
     return <>You are already logged in!</>;
   }
 
