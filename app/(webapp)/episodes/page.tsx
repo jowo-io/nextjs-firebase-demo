@@ -18,16 +18,18 @@ export default async function Page() {
   return (
     <div>
       <Header tag="h1">Episodes</Header>
-      {data.map(({ id, image, title, summary, sats }) => (
-        <EpisodeCard
-          key={id}
-          id={id}
-          image={image}
-          title={title}
-          summary={summary}
-          sats={sats}
-        />
-      ))}
+      <div className="flex basis-1 flex-col gap-3 lg:flex-row">
+        {data.map(({ id, image, title, summary, sats }) => (
+          <EpisodeCard
+            key={id}
+            id={id}
+            image={image}
+            title={title}
+            summary={summary}
+            sats={sats}
+          />
+        ))}
+      </div>
     </div>
   );
 }
