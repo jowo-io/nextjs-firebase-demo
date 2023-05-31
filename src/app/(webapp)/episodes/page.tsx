@@ -9,7 +9,6 @@ import { Episode } from "./types";
 export default async function Page() {
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/list?v=1", {
     method: "POST",
-    next: { revalidate: 10 },
     cache: "no-store",
   });
   if (!res.ok) {
