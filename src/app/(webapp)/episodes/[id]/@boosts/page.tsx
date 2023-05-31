@@ -12,7 +12,6 @@ async function getData(id: string): Promise<Boost[]> {
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/boosts/api/list?v=1", {
     method: "POST",
     body: JSON.stringify({ id }),
-    next: { revalidate: 10 },
     cache: "no-store",
   });
   if (!res.ok) {
@@ -26,11 +25,7 @@ async function getData(id: string): Promise<Boost[]> {
   return res.json();
 }
 
-type Props = {
-  params: { id: string };
-};
-
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const data = await getData(id);
 
