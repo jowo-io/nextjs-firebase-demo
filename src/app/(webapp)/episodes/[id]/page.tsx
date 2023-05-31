@@ -4,7 +4,7 @@ import EpisodeCard from "./EpisodeCard";
 import { Episode } from "../types";
 
 async function getData(id: string): Promise<Episode> {
-  await new Promise((r) => setTimeout(r, 1000));
+  // await new Promise((r) => setTimeout(r, 1000));
 
   const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/episodes/api/get?v=1", {
     method: "POST",

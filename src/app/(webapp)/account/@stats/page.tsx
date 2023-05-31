@@ -1,5 +1,5 @@
 async function getData() {
-  await new Promise((r) => setTimeout(r, 5000));
+  // await new Promise((r) => setTimeout(r, 5000));
 
   return ["foo", "bar"];
 }
