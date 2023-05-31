@@ -1,5 +1,3 @@
 {
-    "roots": [
-        "src"
-    ]
+  "roots": ["src"]
 }
