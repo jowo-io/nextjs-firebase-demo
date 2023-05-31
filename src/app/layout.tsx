@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import { initializeApp } from "firebase/app";
 
 import Favicon from "@/client/ui/snowflakes/Favicon";
 
