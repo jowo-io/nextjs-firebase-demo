@@ -7,7 +7,7 @@ import { Boost } from "../../../boosts/types";
 async function getData(id: string): Promise<Boost[]> {
   // await new Promise((r) => setTimeout(r, 3000));
 
-  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/boosts/api/list?v=1", {
+  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/boosts/api/list", {
     method: "POST",
     body: JSON.stringify({ id }),
     cache: "no-store",

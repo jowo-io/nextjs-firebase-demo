@@ -14,7 +14,7 @@ export async function generateMetadata({
 }: MetadataProps): Promise<Metadata> {
   const { id } = params;
 
-  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/api/episodes/get?v=1", {
+  const res = await fetch(env.NEXT_PUBLIC_SITE_URL + "/api/episodes/get", {
     method: "POST",
     body: JSON.stringify({ id }),
     cache: "no-store",
