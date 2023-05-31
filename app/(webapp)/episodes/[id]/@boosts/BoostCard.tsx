@@ -1,4 +1,5 @@
 "use client";
+import { doc, updateDoc, increment, deleteDoc } from "firebase/firestore";
 
 import getFirebase from "@/utils/firebase";
 import { useDoc } from "@/hooks/useDoc";
@@ -25,6 +26,13 @@ export default function BoostCard({
       <h6 className="mb-2 flex items-center justify-between text-lg font-bold tracking-tight text-gray-900 dark:text-white">
         <b>@{user}</b>
         <i className="text-sm">{createdAt?.toString()}</i>
+        {/* <button
+          onClick={async () => {
+            await deleteDoc(doc(db, "boosts", id));
+          }}
+        >
+          x
+        </button> */}
       </h6>
       <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
         {message}
@@ -33,6 +41,18 @@ export default function BoostCard({
         <div className="text-blue dark:text-white">
           Sats: {data?.sats || sats}
         </div>
+
+        <button
+          onClick={async () => {
+            const ref = doc(db, "boosts", id);
+            await updateDoc(ref, {
+              sats: increment(50),
+            });
+          }}
+          className="rounded bg-blue-500 px-3 py-1 text-sm font-bold text-white hover:bg-blue-700"
+        >
+          Boost
+        </button>
       </div>
     </div>
   );
