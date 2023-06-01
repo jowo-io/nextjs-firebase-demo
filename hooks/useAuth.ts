@@ -35,12 +35,8 @@ function useAuth() {
   useEffect(() => {
     const stateListener = onAuthStateChanged(
       auth,
-      async (user) => {
-        if (user) {
-          setUser(cleanFirebaseUser(user));
-        } else {
-          setError("Unknown user");
-        }
+      async (user, ...args) => {
+        setUser(cleanFirebaseUser(user));
       },
       (error) => {
         console.error(error);
