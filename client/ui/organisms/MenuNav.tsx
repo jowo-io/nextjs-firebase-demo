@@ -93,7 +93,7 @@ export default function Nav({}: Props) {
             <button
               onClick={
                 user
-                  ? () => void auth.signOut()
+                  ? () => auth.signOut()
                   : () => router.push(PathNames.auth)
               }
               className="rounded bg-blue-500 px-3 py-1 text-sm font-bold text-white hover:bg-blue-700"

@@ -8,7 +8,7 @@ import AuthForm from "./AuthForm";
 export default function Page() {
   return (
     <section className="mt-6 rounded bg-gray-300 dark:bg-gray-900">
-      <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 lg:py-0">
+      <div className="mx-auto flex flex-col items-center justify-center px-6 py-6">
         <Link
           href={PathNames.home}
           className="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white"

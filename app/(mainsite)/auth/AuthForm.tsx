@@ -10,6 +10,7 @@ import {
 import getFirebase from "@/utils/firebase";
 import Spinner from "@/client/ui/atoms/Spinner";
 import useAuth from "@/hooks/useAuth";
+import { PathNames } from "@/client/utils/links";
 
 const { auth } = getFirebase();
 
@@ -40,26 +41,48 @@ export default function AuthForm() {
   }
 
   useEffect(() => {
+    const isCallback = isSignInWithEmailLink(auth, window.location.href);
+    if (!isCallback) return;
+
+    console.log({ isCallback, href: window.location.href });
+    let email = window.localStorage.getItem("emailForSignIn");
+    if (!email) {
+      email = window.prompt(
+        "Please provide your email for confirmation"
+      ) as string;
+    }
+    console.log({ email });
+
     (async () => {
-      const isCallback = isSignInWithEmailLink(auth, window.location.href);
-      if (isCallback) {
-        let email = window.localStorage.getItem("emailForSignIn");
-        if (!email) {
-          email = window.prompt(
-            "Please provide your email for confirmation"
-          ) as string;
+      try {
+        setLoading(true);
+        const { user } = await signInWithEmailLink(
+          auth,
+          email,
+          window.location.href
+        );
+        const idToken = await user.getIdToken();
+        const res = await fetch("/api/auth/session", {
+          method: "POST",
+          body: JSON.stringify({ idToken }),
+
+          cache: "no-store",
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
         }
-        try {
-          setLoading(true);
-          await signInWithEmailLink(auth, email, window.location.href);
-          setSuccess(true);
-        } catch (error) {
-          console.error(error);
-          setError(true);
-        } finally {
-          window.localStorage.removeItem("emailForSignIn");
-          setLoading(false);
-        }
+
+        const data = await res.json();
+        console.log({ data });
+
+        setSuccess(true);
+      } catch (error) {
+        console.error(error);
+        setError(true);
+      } finally {
+        window.localStorage.removeItem("emailForSignIn");
+        history.replaceState(undefined, "", PathNames.auth);
+        setLoading(false);
       }
     })();
   }, []);
