@@ -1,6 +1,3 @@
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
-
 import { env } from "@/env.mjs";
 import getFirebase from "../../../../utils/firebase/admin";
 

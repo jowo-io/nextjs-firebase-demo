@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { env } from "@/env.mjs";
 import getFirebase from "../../../../utils/firebase/admin";
 
@@ -9,8 +8,6 @@ const cookieName = "session";
 export async function POST(req: Request) {
   try {
     const { auth } = getFirebase();
-
-    // const cookies = res.cookies.get("session");
 
     const { idToken } = await req.json();
     console.log({ idToken });
