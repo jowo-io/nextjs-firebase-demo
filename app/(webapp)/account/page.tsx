@@ -1,22 +1,10 @@
-import { headers, cookies } from "next/headers";
-
-function getServerAuth() {
-  return {
-    headers: Object.fromEntries(headers() as Headers),
-    cookies: Object.fromEntries(
-      cookies()
-        .getAll()
-        .map((c) => [c.name, c.value])
-    ),
-  };
-}
+import { getServerAuth } from "@/utils/firebase/admin";
 
 async function getData() {
-  const auth = getServerAuth();
+  const { user } = await getServerAuth();
 
   return {
-    hello: "world",
-    auth,
+    user,
   };
 }
 
@@ -24,7 +12,7 @@ export default async function Page() {
   const data = await getData();
   return (
     <p className="text-black dark:text-white">
-      <pre>{JSON.stringify(data.auth, null, 2)}</pre>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </p>
   );
 }

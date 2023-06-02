@@ -13,7 +13,7 @@ import {
   startAfter,
 } from "firebase/firestore";
 
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 
 import BoostCard from "./BoostCard";
 import { Boost } from "../../../boosts/types";

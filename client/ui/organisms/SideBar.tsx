@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/20/solid";
 
 import { PathNames } from "@/client/utils/links";
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 import useAuth from "@/hooks/useAuth";
 
 const { auth } = getFirebase();
@@ -63,7 +63,23 @@ export default function Nav({}: Props) {
           <li>
             <button
               onClick={
-                user ? () => auth.signOut() : () => router.push(PathNames.auth)
+                user
+                  ? () => async () => {
+                      try {
+                        const res = await fetch("/api/auth/signout", {
+                          method: "POST",
+                          cache: "no-store",
+                          body: JSON.stringify({ userId: user.id }),
+                        });
+                        if (!res.ok) {
+                          throw new Error("Failed to fetch data");
+                        }
+                        auth.signOut();
+                      } catch (error) {
+                        console.error(error);
+                      }
+                    }
+                  : () => router.push(PathNames.auth)
               }
               className="mt-2 w-full rounded bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700"
             >

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { getLink } from "@/client/utils/links";
 import { MusicalNoteIcon } from "@heroicons/react/20/solid";
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 import { useDoc } from "@/hooks/useDoc";
 
 import { Episode } from "./types";

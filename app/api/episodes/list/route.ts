@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { collection, getDocs } from "firebase/firestore";
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 
 import { Episode } from "../../../(webapp)/episodes/types";
 

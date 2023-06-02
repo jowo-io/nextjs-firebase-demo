@@ -6,7 +6,7 @@ import Image from "next/image";
 import { cx } from "class-variance-authority";
 
 import { PathNames } from "@/client/utils/links";
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 
@@ -93,7 +93,21 @@ export default function Nav({}: Props) {
             <button
               onClick={
                 user
-                  ? () => auth.signOut()
+                  ? async () => {
+                      try {
+                        const res = await fetch("/api/auth/signout", {
+                          method: "POST",
+                          cache: "no-store",
+                          body: JSON.stringify({ userId: user.id }),
+                        });
+                        if (!res.ok) {
+                          throw new Error("Failed to fetch data");
+                        }
+                        auth.signOut();
+                      } catch (error) {
+                        console.error(error);
+                      }
+                    }
                   : () => router.push(PathNames.auth)
               }
               className="rounded bg-blue-500 px-3 py-1 text-sm font-bold text-white hover:bg-blue-700"

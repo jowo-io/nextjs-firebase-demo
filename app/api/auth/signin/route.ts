@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { env } from "@/env.mjs";
-import getFirebase from "./firebase";
+import getFirebase from "../../../../utils/firebase/admin";
 
 const days = 14;
 const expiresIn = 60 * 60 * 24 * days * 1000;

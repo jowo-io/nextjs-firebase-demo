@@ -1,7 +1,7 @@
 "use client";
 import { doc, updateDoc, increment, deleteDoc } from "firebase/firestore";
 
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 import { useDoc } from "@/hooks/useDoc";
 
 import { Boost } from "../../../boosts/types";

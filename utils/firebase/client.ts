@@ -1,5 +1,5 @@
 import { initializeApp, FirebaseApp } from "firebase/app";
-import { getAuth, Auth } from "firebase/auth";
+import { getAuth, Auth, inMemoryPersistence } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -20,6 +20,8 @@ const getFirebase = (() => {
     try {
       app = initializeApp(firebaseConfig);
       auth = getAuth(app);
+      auth.setPersistence(inMemoryPersistence);
+
       db = getFirestore(app);
     } catch (e) {
       console.error("[@utils/getFirebase]", e);

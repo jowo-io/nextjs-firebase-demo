@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import { getLink } from "@/client/utils/links";
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 import { useDoc } from "@/hooks/useDoc";
 
 import { Episode } from "../types";

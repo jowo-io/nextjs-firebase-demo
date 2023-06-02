@@ -7,7 +7,7 @@ import {
   signInWithEmailLink,
 } from "firebase/auth";
 
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 import Spinner from "@/client/ui/atoms/Spinner";
 import useAuth from "@/hooks/useAuth";
 import { PathNames } from "@/client/utils/links";
@@ -62,7 +62,7 @@ export default function AuthForm() {
           window.location.href
         );
         const idToken = await user.getIdToken();
-        const res = await fetch("/api/auth/session", {
+        const res = await fetch("/api/auth/signin", {
           method: "POST",
           body: JSON.stringify({ idToken }),
 

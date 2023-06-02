@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-import getFirebase from "@/utils/firebase";
+import getFirebase from "@/utils/firebase/client";
 import { Boost } from "@/app/(webapp)/boosts/types";
 
 const { db } = getFirebase();

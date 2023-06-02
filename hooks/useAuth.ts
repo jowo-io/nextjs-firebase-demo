@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
-import getFirebase from "@/utils/firebase";
+import {
+  onAuthStateChanged,
+  User as FirebaseUser,
+  signInWithCustomToken,
+} from "firebase/auth";
+import getFirebase from "@/utils/firebase/client";
 
 const { auth } = getFirebase();
 
@@ -43,7 +47,28 @@ function useAuth() {
         setError(error.message);
       }
     );
-    setReady(true);
+
+    (async () => {
+      try {
+        const res = await fetch("/api/auth/status", {
+          method: "POST",
+          cache: "no-store",
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await res.json();
+        if (data.customToken) {
+          await signInWithCustomToken(auth, data.customToken);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setReady(true);
+      }
+    })();
+
     return () => {
       stateListener();
     };
