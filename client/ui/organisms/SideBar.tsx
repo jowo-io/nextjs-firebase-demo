@@ -64,7 +64,7 @@ export default function Nav({}: Props) {
             <button
               onClick={
                 user
-                  ? () => async () => {
+                  ? async () => {
                       try {
                         const res = await fetch("/api/auth/signout", {
                           method: "POST",

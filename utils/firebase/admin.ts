@@ -5,6 +5,7 @@ import { getAuth, Auth } from "firebase-admin/auth";
 import { getFirestore, Firestore } from "firebase-admin/firestore";
 
 import { env } from "@/env.mjs";
+import { cache } from "react";
 
 const serviceAccount = JSON.parse(
   env.FIREBASE_SERVICE_ACCOUNT
@@ -39,13 +40,12 @@ export default function getFirebase() {
   }
 }
 
-export async function getServerAuth() {
+export const getServerAuth = cache(async function getServerAuth() {
   let data: any = {};
-
+  console.log("get server auth");
   try {
     const { auth } = getFirebase();
     const sessionCookie = cookies().get("session")?.value;
-    data.sessionCookie = sessionCookie;
 
     if (sessionCookie) {
       const decodedClaims = await auth.verifySessionCookie(sessionCookie, true);
@@ -60,4 +60,4 @@ export async function getServerAuth() {
   } finally {
     return data;
   }
-}
+});

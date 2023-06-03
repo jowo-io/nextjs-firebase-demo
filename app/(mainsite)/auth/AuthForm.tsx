@@ -20,7 +20,6 @@ export default function AuthForm() {
   const [isLoading, setLoading] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
-  const [isSuccess, setSuccess] = useState(false);
   const [isError, setError] = useState(false);
 
   async function triggerSendSignInLinkToEmail() {
@@ -71,11 +70,6 @@ export default function AuthForm() {
         if (!res.ok) {
           throw new Error("Failed to fetch data");
         }
-
-        const data = await res.json();
-        console.log({ data });
-
-        setSuccess(true);
       } catch (error) {
         console.error(error);
         setError(true);
@@ -87,13 +81,11 @@ export default function AuthForm() {
     })();
   }, []);
 
-  if (isSuccess) {
-    return <p className="text-black dark:text-white">Success!</p>;
-  }
-
   if (user) {
     return (
-      <p className="text-black dark:text-white">You are already logged in!</p>
+      <p className="text-center text-black dark:text-white">
+        You are signed in as <b>{user.email}</b>
+      </p>
     );
   }
 

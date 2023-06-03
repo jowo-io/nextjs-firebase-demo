@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 
 import Favicon from "@/client/ui/snowflakes/Favicon";
 
@@ -12,9 +11,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <Favicon />
-      </Head>
+      </head>
       <body>{children}</body>
     </html>
   );
