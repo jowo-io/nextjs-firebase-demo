@@ -1,15 +1,20 @@
 import React, { PropsWithChildren } from "react";
-import Nav from "@/client/ui/organisms/MenuNav";
+
+import BasicNav from "@/client/ui/organisms/BasicNav";
+import SideBar from "@/client/ui/organisms/SideBar";
 
 export interface Props extends PropsWithChildren {}
 
-export default function BasicTemplate({ children }: Props) {
+export default function Webapp({ children }: Props) {
   return (
     <main className="p-sm min-h-screen bg-white dark:bg-black">
-      <Nav />
-      <div className="text-black dark:text-white">side bar here</div>
-      <div className="m-auto flex w-full max-w-xs items-center justify-center">
-        {children}
+      <BasicNav />
+      <SideBar />
+
+      <div className="ml-10 p-4 sm:ml-64">
+        <div className="mt-14 rounded-lg border-2 border-dashed border-gray-200 p-4 dark:border-gray-700">
+          {children}
+        </div>
       </div>
     </main>
   );

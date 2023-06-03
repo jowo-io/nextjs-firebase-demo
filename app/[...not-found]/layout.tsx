@@ -1,11 +1,7 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import BasicTemplate from "@/client/ui/templates/Basic";
 
-export default function NotFoundLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Layout({ children }: PropsWithChildren) {
   return <BasicTemplate>{children}</BasicTemplate>;
 }

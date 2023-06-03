@@ -3,7 +3,7 @@ import MenuNav from "@/client/ui/organisms/MenuNav";
 
 export interface Props extends PropsWithChildren {}
 
-export default function BasicTemplate({ children }: Props) {
+export default function Basic({ children }: Props) {
   return (
     <main className="p-sm min-h-screen bg-white dark:bg-black">
       <MenuNav />

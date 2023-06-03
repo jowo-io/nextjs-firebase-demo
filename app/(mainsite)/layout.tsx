@@ -1,20 +1,7 @@
-import React from "react";
-import { Metadata } from "next";
+import React, { PropsWithChildren } from "react";
 
-import MenuNav from "@/client/ui/organisms/MenuNav";
+import BasicTemplate from "@/client/ui/templates/Basic";
 
-export const metadata: Metadata = {
-  title: "Demo app",
-  description: "This is a demo app",
-};
-
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <main className="p-sm min-h-screen bg-white dark:bg-black">
-      <MenuNav />
-      <div className="m-auto flex w-full max-w-xs items-center justify-center">
-        {children}
-      </div>
-    </main>
-  );
+export default function Layout({ children }: PropsWithChildren) {
+  return <BasicTemplate>{children}</BasicTemplate>;
 }
