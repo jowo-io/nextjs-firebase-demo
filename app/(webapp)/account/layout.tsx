@@ -3,7 +3,6 @@ import { Metadata } from "next";
 
 import Header from "@/client/ui/atoms/Header";
 import { getServerAuth } from "@/utils/firebase/admin";
-import { User } from "@/hooks/useAuth";
 
 export const revalidate = 0;
 
