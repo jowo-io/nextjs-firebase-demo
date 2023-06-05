@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Header from "@/client/ui/atoms/Header";
 import { getServerAuth } from "@/utils/firebase/admin";
 
-export const revalidate = 0;
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: "Account",

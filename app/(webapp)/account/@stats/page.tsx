@@ -1,6 +1,6 @@
 import { getServerAuth } from "@/utils/firebase/admin";
 
-export const revalidate = 0;
+export const revalidate = false;
 
 async function getData() {
   const { user } = await getServerAuth();
