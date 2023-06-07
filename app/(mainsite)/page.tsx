@@ -1,6 +1,8 @@
 import React from "react";
 
 import Header from "@/client/ui/atoms/Header";
+import Link from "next/link";
+import { PathNames } from "@/client/utils/links";
 
 export default function Page() {
   return (
@@ -20,6 +22,15 @@ export default function Page() {
       <p className="text-black dark:text-white">
         Donec ultricies id justo sed tempus. Nunc vel risus efficitur, semper
         nunc a, scelerisque dolor.
+      </p>
+      <p className="text-black dark:text-white">
+        View the legacy pages directory{" "}
+        <Link
+          className="underline hover:text-gray-700 hover:dark:text-gray-300"
+          href={PathNames.test}
+        >
+          here
+        </Link>
       </p>
     </div>
   );

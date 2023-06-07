@@ -19,4 +19,6 @@ export enum PathNames {
   // posts
   listEpisodes = "/episodes",
   viewEpisode = "/episodes/[id]",
+
+  test = "/test",
 }
